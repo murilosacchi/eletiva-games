@@ -1,0 +1,73 @@
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://fug78o4tn0cc"]
+
+[ext_resource type="Texture2D" uid="uid://hbj35hi7euey" path="res://sprites/Seasonal Tilesets/1 - Grassland/Grassland_entities (16 x 16).png" id="1_fxot3"]
+[ext_resource type="Texture2D" uid="uid://50pnefxiv4il" path="res://sprites/Seasonal Tilesets/3 - Tropics/Tropics_entities (16 x 16).png" id="1_setfr"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_setfr"]
+tile_data = PackedInt32Array(0, 917505, 4, 65536, 917505, 5, 131072, 917505, 5, 196608, 917505, 5, 1, 983041, 4, 2, 983041, 4, 3, 983041, 4, 131075, 589825, 1, 4, 1048577, 4, 65540, 1048577, 5, 131076, 1048577, 5, 196612, 1048577, 5, 5, 1114113, 4, 131077, 589825, 1, 6, 1114113, 4, 7, 1114113, 4, 8, 1179649, 4, 65544, 1179649, 5, 131080, 1179649, 5, 196616, 1179649, 5)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_afwjg"]
+texture = ExtResource("1_setfr")
+11:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+9:3/0 = 0
+11:3/0 = 0
+13:3/0 = 0
+15:3/0 = 0
+12:5/animation_separation = Vector2i(1, 0)
+12:5/animation_frame_0/duration = 0.3
+12:5/animation_frame_1/duration = 0.3
+12:5/0 = 0
+12:5/0/z_index = 2
+12:6/animation_separation = Vector2i(1, 0)
+12:6/animation_frame_0/duration = 0.3
+12:6/animation_frame_1/duration = 0.3
+12:6/0 = 0
+12:6/0/z_index = 2
+12:7/0 = 0
+14:7/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+1:1/size_in_atlas = Vector2i(3, 3)
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xwcet"]
+texture = ExtResource("1_fxot3")
+15:2/0 = 0
+16:2/0 = 0
+17:2/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+16:4/0 = 0
+17:4/0 = 0
+18:4/0 = 0
+1:5/0 = 0
+3:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+9:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+14:5/0 = 0
+16:5/0 = 0
+18:5/0 = 0
+1:1/size_in_atlas = Vector2i(3, 3)
+1:1/0 = 0
+5:1/size_in_atlas = Vector2i(3, 3)
+5:1/0 = 0
+9:1/size_in_atlas = Vector2i(3, 3)
+9:1/0 = 0
+
+[resource]
+sources/1 = SubResource("TileSetAtlasSource_xwcet")
+sources/0 = SubResource("TileSetAtlasSource_afwjg")
+pattern_0 = SubResource("TileMapPattern_setfr")
