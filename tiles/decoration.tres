@@ -66,6 +66,7 @@ texture = ExtResource("1_fxot3")
 5:1/0 = 0
 9:1/size_in_atlas = Vector2i(3, 3)
 9:1/0 = 0
+4:5/0 = 0
 
 [resource]
 sources/1 = SubResource("TileSetAtlasSource_xwcet")
