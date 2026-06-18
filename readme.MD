@@ -1,53 +1,173 @@
-# 🎮 Plataforma de Ação - Projeto Eletiva
+# Projeto-Eletiva: Action Platform Game
 
-**Disciplina:** Plataformas para Desenvolvimento de Games  
-**Motor:** Godot Engine 4.4.1  
-**Status:** Protótipo Funcional - Fase de Desenvolvimento
+A 2D platformer game developed as part of a Game Development Platforms course, featuring state-machine-based player movement, dynamic camera systems, and multiple themed environments.
 
----
+## Overview
 
-## 📋 Visão Geral
+**Projeto-Eletiva** is a functional prototype of a 2D action platformer built with Godot Engine 4.4.1. The game implements fundamental platformer mechanics through a state machine architecture, allowing the player character to transition seamlessly between idle, walking, and jumping states. The project demonstrates practical game development concepts including physics simulation, scene management, camera control, and level progression.
 
-Jogo de plataforma em 2D com sistema de movimentação baseado em máquina de estados, múltiplos cenários temáticos e um protagonista com diversas animações de ação. O projeto implementa mecânicas fundamentais de jogos de plataforma, incluindo movimento, pulo, física de gravidade e transição entre níveis.
+The game is optimized for pixel art aesthetics with a viewport resolution of 288x208 pixels and features over 30 character animations across multiple action states.
 
-**Características Principais:**
-- ✓ Sistema de movimento e pulo com física realista
-- ✓ Máquina de estados para gerenciar estados do jogador (idle, walk, jump)
-- ✓ Câmera dinâmica que segue o jogador
-- ✓ 3 cenários diferentes com tilesets temáticos
-- ✓ Sistema de progressão entre fases
-- ✓ Mais de 30 animações do protagonista
-- ✓ Resolução otimizada para pixel art (288x208)
+## Context
 
----
+This repository represents the game engine and core gameplay systems developed as part of an elective course focused on game development platforms. The project serves as a practical exploration of platformer mechanics and the Godot Engine's capabilities for 2D game development. Within the broader solution, this repository contains all gameplay logic, scene architecture, and visual assets required to run the platform game across multiple themed levels.
 
-## 📦 Requisitos
+## Technologies
 
-- **Motor:** Godot Engine **4.4.1** (versão exata)
-  - Download: [Godot 4.4.1 Stable](https://godotengine.org/download)
-  - Arquivo Windows: `Godot_v4.4.1-stable_win64.exe`
+- **Engine**: Godot Engine 4.4.1
+- **Scripting Language**: GDScript
+- **Graphics**: Pixel art (32×32 sprites with 288×208 viewport)
+- **Version Control**: Git
+- **Platform Target**: Cross-platform (configured for mobile and desktop)
 
----
+## Architecture
 
-## 🚀 Como Executar
+The game follows a modular, component-based architecture organized into distinct systems:
 
-### 1. Importar o Projeto
+### Player State Machine
+The player character is controlled by a finite state machine (FSM) with three primary states:
+- **Idle**: Character at rest, awaiting input
+- **Walk**: Character moving horizontally in response to input
+- **Jump**: Character in mid-air due to jump action or gravity
 
-1. Abra o Godot Engine
-2. Clique em **Import** na tela inicial
-3. Navegue até a pasta do projeto (`projeto-eletiva`)
-4. Selecione o arquivo `project.godot`
-5. Clique em **Import & Edit**
+State transitions are managed by the `player.gd` script, which handles input detection and physics calculations.
 
-### 2. Rodar as Cenas
+### Camera System
+A dedicated camera entity (`camera.gd`) follows the player character dynamically by querying the global "player" group. This ensures the viewport always centers on player position during gameplay.
 
-As cenas estão localizadas em `/scene`:
+### Level Progression
+The `level_end.gd` script manages scene transitions via Area2D collision detection. When the player enters a level exit zone, the system automatically loads the next scene based on configured parameters.
+
+### Asset Organization
+- **Entities**: Reusable scene components (player, camera, level end triggers)
+- **Scripts**: Core game logic in GDScript
+- **Sprites**: Character animations and tileset definitions
+- **Scenes**: Composed level environments
+- **Tiles**: Terrain and decoration resources
+
+## Features
+
+- **State-Based Player Movement**: Fluid transitions between idle, walking, and jumping states
+- **Physics Simulation**: Gravity-based falling and momentum-aware movement
+- **Dynamic Camera**: Real-time player tracking with smooth following
+- **Multi-Level Support**: Three themed environments with seamless scene transitions
+- **Extensive Animation Library**: 30+ character animations covering movement, combat, and injury states
+- **Thematic Level Design**: Seasonal tilesets (Grassland, Autumn Forest, Tropics, Winter World) with environment-specific visual identity
+- **Input System**: Keyboard controls (A/D for movement, Space/W for jumping; arrow keys supported)
+- **Pixel Art Optimization**: Retro aesthetic with optimized asset sizes and viewport resolution
+
+## Repository Structure
 
 ```
-scene/
-  ├── forest.tscn      # Fase 1 - Floresta
-  ├── game.tscn        # Menu / Fase Principal
-  └── tropic.tscn      # Fase 2 - Trópicos
+projeto-eletiva/
+├── entities/                    # Reusable scene components
+│   ├── player.tscn             # Player character scene
+│   ├── camera.tscn             # Camera follow entity
+│   └── level_end.tscn          # Level exit trigger
+├── scripts/                     # GDScript game logic
+│   ├── player.gd               # Player state machine and movement
+│   ├── camera.gd               # Dynamic camera controller
+│   └── level_end.gd            # Scene transition logic
+├── scene/                       # Composed level scenes
+│   ├── forest.tscn             # Forest level
+│   ├── game.tscn               # Main/menu level
+│   └── tropic.tscn             # Tropical level
+├── sprites/                     # Visual assets
+│   ├── 1 - Toggle/             # Character animations (30+ states)
+│   └── Seasonal Tilesets/      # Environment tilesets and decorations
+├── tiles/                       # Tile resource definitions
+│   ├── terrain.tres            # Terrain tile resource
+│   └── decoration.tres         # Decoration tile resource
+├── project.godot               # Godot project configuration
+└── icon.svg                     # Project icon
+```
+
+### Key Files
+
+- [project.godot](project.godot): Engine configuration, input mappings, and project metadata
+- [player.gd](scripts/player.gd): Core player logic implementing state machine and physics
+- [camera.gd](scripts/camera.gd): Camera tracking system using group-based target detection
+- [level_end.gd](scripts/level_end.gd): Scene transition handler
+
+## Installation
+
+### Prerequisites
+
+- **Godot Engine 4.4.1** (exact version required)
+  - Download from: [Godot 4.4.1 Stable Release](https://godotengine.org/download)
+
+### Setup Instructions
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/yourusername/eletiva-games.git
+   cd eletiva-games
+   ```
+
+2. **Open in Godot**
+   - Launch Godot Engine 4.4.1
+   - Click **Import** on the startup screen
+   - Navigate to the cloned project directory
+   - Select `project.godot`
+   - Click **Import & Edit**
+
+3. **Project Initialization**
+   - Godot will automatically import all scenes, scripts, and assets
+   - Wait for the editor to fully load the project
+
+## Usage
+
+### Running the Game
+
+1. In the Godot editor, ensure the main scene is set (typically `game.tscn`)
+2. Press **F5** or click the **Play** button to start the game
+3. The game will launch in a new window with the configured viewport (288×208 pixels)
+
+### Game Controls
+
+| Action | Input |
+|--------|-------|
+| Move Left | A or Left Arrow |
+| Move Right | D or Right Arrow |
+| Jump | Space or W |
+
+### Level Selection
+
+The project contains three playable levels accessible through scene transitions:
+- **forest.tscn**: Initial level with grassland environment
+- **game.tscn**: Main level with primary gameplay setup
+- **tropic.tscn**: Advanced level with tropical environment
+
+Load scenes through the editor or modify `level_end.gd` to configure progression flow.
+
+## My Contributions
+
+Based on repository evidence, contributions include:
+
+- **Core Player State Machine**: Implementation of the three-state FSM (`player.gd`) with smooth state transitions
+- **Physics Integration**: Integration of Godot's physics system for gravity, movement, and collision detection
+- **Camera System**: Development of the group-based dynamic camera that follows player position (`camera.gd`)
+- **Level Progression**: Implementation of scene transition logic triggered by level exit zones (`level_end.gd`)
+- **Input Mapping**: Configuration of input events for movement (left/right) and jump actions
+- **Project Architecture**: Organization of assets, scripts, and scenes into a modular structure
+- **Asset Integration**: Setup and configuration of 30+ character animations and multi-season tilesets
+
+## Future Improvements
+
+- **Enhanced Mechanics**: Add double-jump, wall-slide, and dash mechanics for expanded movement options
+- **Enemy Systems**: Implement enemy AI with patrol and chase behaviors
+- **Combat Mechanics**: Introduce player attack animations and projectile systems
+- **Health System**: Add health/damage mechanics with visual feedback and the existing "Half_Health" animation states
+- **Particle Effects**: Integrate particle systems for jump landing, damage, and environmental interactions
+- **Audio System**: Add background music and sound effects for actions and level transitions
+- **UI/HUD**: Implement health display, level progression indicators, and pause menu
+- **Level Editor Tools**: Create visual level design tools to streamline environment creation
+- **Performance Optimization**: Profile and optimize asset loading for mobile platforms
+- **Additional Environments**: Expand with winter world level and additional seasonal variations
+
+## Team
+
+This project was developed by a team of Computer Science students as part of a Game Development Platforms elective course. The collaborative effort demonstrates practical application of game engine fundamentals and software architecture principles in a production-oriented project.
 ```
 
 **Para executar uma cena:**
